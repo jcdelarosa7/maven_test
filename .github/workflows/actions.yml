@@ -12,3 +12,5 @@ jobs:
           distribution: 'temurin'    
       - name: Build with Maven
         run: mvn validate
+      - name: build
+        run: mvn package

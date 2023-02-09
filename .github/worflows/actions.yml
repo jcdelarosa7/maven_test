@@ -1,0 +1,7 @@
+name: maven-validate
+on: push
+jobs:
+    my-job:
+      runs-on: centos-latest
+      - run: |
+             echo "helloworld"

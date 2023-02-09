@@ -2,6 +2,6 @@ name: maven-validate
 on: push
 jobs:
   my-job:
-    runs-on: centos-latest
+    runs-on: centos:7
     steps:
       - run: echo 'test'

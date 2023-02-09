@@ -1,7 +1,17 @@
-name: maven-validate
+name: docker-build
 on: push
 jobs:
   my-job:
-    runs-on: centos-latest
+    runs-on: ubuntu-latest
     steps:
-      - run: echo 'test'
+    - uses: docker/build-push-action@v2 
+  ##docker/login-action@v2
+      with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+    - uses: actions/checkout@v2
+    - run: |
+           docker login -u jcdelarosa7 --password ${{ secrets.DOCKER_PASSWORD }}
+           docker build . --file Dockerfile --tag jcdel:$(date +%m-%d-%y)
+           docker tag jcdel:$(date +%m-%d-%y) jcdel:first
+           docker push jcdel:first

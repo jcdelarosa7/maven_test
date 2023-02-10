@@ -11,6 +11,9 @@ jobs:
           java-version: '11'
           distribution: 'temurin'    
       - name: Build with Maven
-        run: mvn validate
+        run: |
+             java -version
+             mvn -version
+             mvn validate
       - name: build
         run: mvn package -e
